@@ -33,7 +33,7 @@ case "$1" in
 
         systemctl daemon-reload
         for service in "$SYSTEMD"/health-*.service; do
-            systemctl enable --now "$service"
+            systemctl enable --now "$(basename $service)"
         done
         ;;
 
@@ -43,7 +43,7 @@ case "$1" in
         rm -rf "$PYTHON_VENV"
 
         for service in "$SYSTEMD"/health-*.service; do
-            systemctl disable --now "$service"
+            systemctl disable --now "$(basename $service)"
         done
 
         rm -rf "$SYSTEMD"/health-*
