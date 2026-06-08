@@ -1,0 +1,12 @@
+[Unit]
+Description=Health AI Agent Assistant
+After=network.target sound.target multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/libexec/health_assistant/python-venv/bin/python3 /usr/local/libexec/health_assistant/agent.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
